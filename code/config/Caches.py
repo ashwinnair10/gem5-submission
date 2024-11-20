@@ -50,13 +50,13 @@ from gem5.isas import ISA
 
 
 class L1Cache(Cache):
-    assoc = 2
-    tag_latency = 2
-    data_latency = 2
-    response_latency = 2
-    mshrs = 4
+    assoc = 4
+    tag_latency = 3
+    data_latency = 3
+    response_latency = 3
+    mshrs = 32
     tgts_per_mshr = 20
-    replacement_policy = LIPRP()
+    replacement_policy = LRURP()
 
 class L1_ICache(L1Cache):
     is_read_only = True
@@ -69,11 +69,11 @@ class L1_DCache(L1Cache):
 
 
 class L2Cache(Cache):
-    assoc = 8
-    tag_latency = 20
-    data_latency = 20
-    response_latency = 20
-    mshrs = 20
+    assoc = 16
+    tag_latency = 9
+    data_latency = 9
+    response_latency = 9
+    mshrs = 32
     tgts_per_mshr = 12
     write_buffers = 8
     replacement_policy=LIPRP()
