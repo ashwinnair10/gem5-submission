@@ -18,9 +18,9 @@ namespace gem5{
         void LIP9::reset(const std::shared_ptr<ReplacementData>& replacement_data,std::vector<ReplaceableEntry*> blks)const{
             // std::static_pointer_cast<LIP9ReplData>(replacement_data)->lastTouchTick=curTick();
             std::sort(blks.begin(),blks.end(),[](ReplaceableEntry* a,ReplaceableEntry* b){return std::static_pointer_cast<LIP9ReplData>(a->replacementData)->lastTouchTick<std::static_pointer_cast<LIP9ReplData>(b->replacementData)->lastTouchTick;});
-            std::static_pointer_cast<LIP9ReplData>(replacement_data)->lastTouchTick=std::static_pointer_cast<LIP9ReplData>(blks[9]->replacementData)->lastTouchTick;
+            std::static_pointer_cast<LIP9ReplData>(replacement_data)->lastTouchTick=std::static_pointer_cast<LIP9ReplData>(blks[8]->replacementData)->lastTouchTick;
             // invalidate(blks[9]->replacementData);
-            std::static_pointer_cast<LIP9ReplData>(blks[9]->replacementData)->lastTouchTick=Tick(0);
+            std::static_pointer_cast<LIP9ReplData>(blks[8]->replacementData)->lastTouchTick--;
         }
         ReplaceableEntry* LIP9::getVictim(const ReplacementCandidates& candidates)const{
             assert(candidates.size()>0);
