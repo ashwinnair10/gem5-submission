@@ -74,6 +74,7 @@ def config_etrace(cpu_cls, cpu_list, options):
             cpu.decodeWidth=2
             cpu.issueWidth=2
             cpu.commitWidth=2
+            cpu.branchPred = TAGE_SC_L_64KB(ras=ReturnAddrStack(numEntries=32))
     else:
         fatal(
             "%s does not support data dependency tracing. Use a CPU model of"
